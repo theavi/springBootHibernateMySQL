@@ -1,0 +1,25 @@
+spring:
+      datasource:
+                driver-class-name: com.mysql.jdbc.Driver
+                url: jdbc:mysql://localhost:3306/cleaning_service
+                username: root
+                password: root
+                tomcat.max-wait: 20000
+                tomcat.max-active: 50
+                tomcat.max-idle: 20
+                tomcat.min-idle: 15
+
+      jpa:
+         properties:
+                   hibernate:
+                            dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+                            id.new_generator_mappings: false
+                            format_sql: true
+
+logging:
+       level:
+            org:
+               hibernate:
+                        SQL: DEBUG
+                        type.descriptor.sql.BasicBinder: TRACE
+server.port: 8087
