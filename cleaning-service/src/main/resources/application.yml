@@ -15,6 +15,7 @@ spring:
                             dialect: org.hibernate.dialect.MySQL5InnoDBDialect
                             id.new_generator_mappings: false
                             format_sql: true
+                            ddl-auto: create
 
 logging:
        level:

@@ -1,23 +1,15 @@
-package com.avish.cleaningservice.model;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 /**
  * 
- * @author Avinash: this class represent the user table
  */
-@Entity
-public class User {
+package com.avish.cleaningservice.dto;
 
-	/**
-	 * primary key id
-	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+import com.avish.cleaningservice.model.Address;
 
+/**
+ * @author PC
+ *
+ */
+public class UserDto {
 	private Integer id;
 	/**
 	 * firstName
@@ -30,27 +22,11 @@ public class User {
 	/**
 	 * address
 	 */
-	private Integer address;
+	private Address address;
 	/**
 	 * mobile
 	 */
 	private Long mobile;
-	/**
-	 * email
-	 */
-	private String email;
-	/**
-	 * username
-	 */
-	private String userName;
-	/**
-	 * password
-	 */
-	private String password;
-	/**
-	 * isBroker
-	 */
-	private Integer isBroker;
 
 	/**
 	 * @return the id
@@ -100,7 +76,7 @@ public class User {
 	/**
 	 * @return the address
 	 */
-	public Integer getAddress() {
+	public Address getAddress() {
 		return address;
 	}
 
@@ -108,7 +84,7 @@ public class User {
 	 * @param address
 	 *            the address to set
 	 */
-	public void setAddress(Integer address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 
@@ -187,6 +163,23 @@ public class User {
 		this.isBroker = isBroker;
 	}
 
+	/**
+	 * email
+	 */
+	private String email;
+	/**
+	 * username
+	 */
+	private String userName;
+	/**
+	 * password
+	 */
+	private String password;
+	/**
+	 * isBroker
+	 */
+	private Integer isBroker;
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -194,8 +187,8 @@ public class User {
 	 */
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address
-				+ ", mobile=" + mobile + ", email=" + email + ", username=" + userName + ", password=" + password
+		return "UserDto [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address
+				+ ", mobile=" + mobile + ", email=" + email + ", userName=" + userName + ", password=" + password
 				+ ", isBroker=" + isBroker + "]";
 	}
 
