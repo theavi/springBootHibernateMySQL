@@ -1,5 +1,6 @@
 package com.avish.cleaningservice.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,16 +88,38 @@ class UserServiceImpl implements UserService {
 
 	@Override
 	public User deleteUser(Integer userId) {
-		User isExist = userDao.findUserById(userId);
-		if (null != isExist) {
-			return userDao.deleteUser(isExist);
+		User user = userDao.findUserById(userId);
+		if (null != user) {
+			Address address = addressDao.findAddressById(user.getAddress());
+			userDao.deleteUser(user);
+			addressDao.deleteAddress(address);
 		}
-		return null;
+		return user;
 	}
 
 	@Override
-	public List<User> getAllUser() {
-		return userDao.getAllUser();
+	public List<UserDto> getAllUser() {
+		ArrayList<UserDto> dtoList = new ArrayList<UserDto>();
+		List<User> userList = userDao.getAllUser();
+		for (User user : userList) {
+			Address address = addressDao.findAddressById(user.getAddress());
+			UserDto userDto = new UserDto();
+			userDto.setAddress(address);
+			userDto.setEmail(user.getEmail());
+			userDto.setFirstName(user.getFirstName());
+			userDto.setIsBroker(user.getIsBroker());
+			userDto.setLastName(user.getLastName());
+			userDto.setMobile(user.getMobile());
+			userDto.setPassword(user.getPassword());
+			userDto.setUserName(user.getUserName());
+			dtoList.add(userDto);
+		}
+		return dtoList;
+	}
+
+	@Override
+	public User findUserById(Integer userId) {
+		return userDao.findUserById(userId);
 	}
 
 }

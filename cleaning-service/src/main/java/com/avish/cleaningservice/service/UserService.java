@@ -26,7 +26,7 @@ public interface UserService {
 	/**
 	 * @return
 	 */
-	public List<User> getAllUser();
+	public List<UserDto> getAllUser();
 
 	/**
 	 * @param userId
@@ -34,4 +34,8 @@ public interface UserService {
 	 */
 	public User deleteUser(Integer userId);
 
+	/**
+	 * @return
+	 */
+	public User findUserById(Integer userId);
 }

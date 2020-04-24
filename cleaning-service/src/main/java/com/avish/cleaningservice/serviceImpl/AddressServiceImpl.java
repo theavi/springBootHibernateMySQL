@@ -25,4 +25,10 @@ public class AddressServiceImpl implements AddressService {
 		return addressDao.createAddress(address);
 	}
 
+	@Override
+	public Address findAddressById(Integer addressId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
