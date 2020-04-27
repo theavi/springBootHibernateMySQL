@@ -1,24 +1,16 @@
 /**
  * 
  */
-package com.avish.cleaningservice.model;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+package com.avish.cleaningservice.dto;
 
 /**
- * @author Avinash this class represent the order table in database
+ * @author PC
  *
  */
-@Entity(name="tbl_order")
-public class Order {
+public class OrderDto {
 	/*
 	 * id
 	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	/*
 	 * orderType

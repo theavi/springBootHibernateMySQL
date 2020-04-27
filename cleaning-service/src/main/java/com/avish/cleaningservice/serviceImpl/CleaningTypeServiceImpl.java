@@ -2,6 +2,7 @@ package com.avish.cleaningservice.serviceImpl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.avish.cleaningservice.dao.CleaningTypeDao;
@@ -12,6 +13,7 @@ import com.avish.cleaningservice.service.CleaningTypeService;
 @Service
 public class CleaningTypeServiceImpl implements CleaningTypeService {
 
+	@Autowired
 	private CleaningTypeDao cleaningTypeDao;
 
 	@Override
@@ -22,10 +24,11 @@ public class CleaningTypeServiceImpl implements CleaningTypeService {
 	}
 
 	@Override
-	public CleaningType modifyCleaningType(Integer id, String name) {
-		CleaningType cleaningType = cleaningTypeDao.findCleaningTypeById(id);
+	public CleaningType modifyCleaningType(CleaningTypeDto cleaningTypeDto) {
+		CleaningType cleaningType = cleaningTypeDao.findCleaningTypeById(cleaningTypeDto.getId());
 		if (null != cleaningType) {
-			cleaningType.setName(name);
+			cleaningType.setName(cleaningTypeDto.getName());
+			cleaningTypeDao.modifyCleaning(cleaningType);
 		}
 		return cleaningType;
 	}

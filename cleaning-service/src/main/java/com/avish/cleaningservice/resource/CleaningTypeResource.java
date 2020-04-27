@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,10 +35,10 @@ public class CleaningTypeResource {
 		return cleaningTypeService.createCleaningType(cleaningTypeDto);
 	}
 
-	@PutMapping(value = "/id=?&name=?")
-	public CleaningType modifyCleaningType(@RequestParam("id") Integer id, @RequestParam("name") String name) {
+	@PutMapping
+	public CleaningType modifyCleaningType(@RequestBody CleaningTypeDto cleaningTypeDto) {
 
-		return cleaningTypeService.modifyCleaningType(id, name);
+		return cleaningTypeService.modifyCleaningType(cleaningTypeDto);
 
 	}
 

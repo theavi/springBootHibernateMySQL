@@ -42,6 +42,7 @@ public class CleaningTypeDaoImpl implements CleaningTypeDao {
 		return entityManager.createQuery("SELECT ct FROM CleaningType ct", CleaningType.class).getResultList();
 	}
 
+	@Transactional
 	@Override
 	public CleaningType deleteCleaningTypeById(CleaningType cleaningType) {
 		entityManager.remove(cleaningType);

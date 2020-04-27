@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,47 +29,40 @@ import com.avish.cleaningservice.service.UserService;
  */
 @RestController
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@RequestMapping(value = "/users")
 public class UserResource {
 
 	@Autowired
 	private UserService userService;
-	@Autowired
-	private AddressService addressService;
 
-	@RequestMapping(value = "/user", method = RequestMethod.POST, consumes = { "application/json" }, produces = {
-			"application/json" })
+
+	@PostMapping
 	public User create(@RequestBody UserDto userDto) {
 		System.out.println(userDto.toString());
 		return userService.createUser(userDto);
 	}
 
-	@RequestMapping(value = "/user", method = RequestMethod.PUT)
+	@PutMapping
 	public User modifyUser(@RequestBody UserDto userDto) {
 		return userService.modifyUser(userDto);
 
 	}
 
-	@RequestMapping(value = "/user/{userId}", method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/{userId}")
 	public User deleteUser(@PathVariable("userId") Integer userId) {
 		return userService.deleteUser(userId);
 
 	}
 
-	@GetMapping(value = "user/{userId}")
+	@GetMapping(value = "/{userId}")
 	public User findUserById(@PathVariable("userId") Integer userId) {
 
 		return userService.findUserById(userId);
 	}
 
-	@GetMapping(value = "user")
+	@GetMapping
 	public List<UserDto> getAllUser() {
 		return userService.getAllUser();
 	}
 
-	@RequestMapping(value = "/createAddress")
-	public Address create(@RequestBody Address address) {
-		addressService.createAddress(address);
-		return address;
-
-	}
 }

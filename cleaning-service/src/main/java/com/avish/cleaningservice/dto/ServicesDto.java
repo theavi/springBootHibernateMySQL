@@ -1,22 +1,11 @@
-package com.avish.cleaningservice.model;
+package com.avish.cleaningservice.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.avish.cleaningservice.model.CleaningType;
 
-/**
- * 
- * @author Avinash this class represent the service table in the database
- *
- */
-@Entity
-public class Service {
+public class ServicesDto {
 	/*
 	 * id
 	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	/*
 	 * name
@@ -25,7 +14,7 @@ public class Service {
 	/*
 	 * cleaningType
 	 */
-	private Integer cleaningType;
+	private Integer cleaningTypeId;
 
 	/**
 	 * @return the id
@@ -61,7 +50,7 @@ public class Service {
 	 * @return the cleaningType
 	 */
 	public Integer getCleaningType() {
-		return cleaningType;
+		return cleaningTypeId;
 	}
 
 	/**
@@ -69,7 +58,7 @@ public class Service {
 	 *            the cleaningType to set
 	 */
 	public void setCleaningType(Integer cleaningType) {
-		this.cleaningType = cleaningType;
+		this.cleaningTypeId = cleaningType;
 	}
 
 }

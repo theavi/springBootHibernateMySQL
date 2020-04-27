@@ -21,7 +21,7 @@ public interface CleaningTypeService {
 	 * @param cleaningTypeDto
 	 * @return
 	 */
-	public CleaningType modifyCleaningType(Integer id, String name);
+	public CleaningType modifyCleaningType(CleaningTypeDto cleaningTypeDto);
 
 	/**
 	 * @param clyninfTypeId
